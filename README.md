@@ -54,6 +54,16 @@ CIRCUIT DIAGRAM
 
 ### FIGURE 04 CIRCUIT DIAGRAM
 
+OFF SETUP:
+
+
+![output](./e1.png)
+
+ON SETUP:
+
+
+![output](./e2.png)
+
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
 2.	Connect the board to your computer via the USB cable.
@@ -67,14 +77,85 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
 
+SERIAL MONITOR
+```
+// C++ code
+//
+#include <Servo.h>
+int pos = 0;
 
+Servo servo_11;
 
+void setup()
+{
+  servo_11.attach(11,500,2500);
+  Serial.begin(9600);
+}
 
+void loop()
+{
+  for (pos = 0;pos<=180;pos+=1)
+  {
+    servo_11.write(pos);
+    delay(5);
+    Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  for (pos = 180;pos>=0;pos-=1)
+  {
+    servo_11.write(pos);
+    delay(10);
+    Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  delay(100);
+  Serial.print("angle of servo= ");
+  Serial.println(pos);
+}
+```
+OUTPUT:
 
+![output](./e3.png)
 
+TOGGLE GRAPH:
+```
+// C++ code
+#include <Servo.h>
+int pos = 0;
 
+Servo servo_11;
+
+void setup()
+{
+  servo_11.attach(11,500,2500);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  for (pos = 0;pos<=180;pos+=1)
+  {
+    servo_11.write(pos);
+    delay(5);
+    //Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  for (pos = 180;pos>=0;pos-=1)
+  {
+    servo_11.write(pos);
+    delay(10);
+    //Serial.print("angle of servo= ");
+  Serial.println(pos);
+  }
+  delay(100);
+  Serial.print("angle of servo= ");
+  Serial.println(pos);
+}
+```
+OUTPUT:
+
+![output](./e4.png)
 
 
 ### RESULTS: 
